@@ -23,7 +23,7 @@
 
 ---
 
-## ⚡ Preview
+## ⚡ Preview Imgae
 
 ![Portfolio Preview](public/images/preview.png)
 
