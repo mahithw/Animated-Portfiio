@@ -13,12 +13,14 @@ export function initialFX() {
   });
 
   var landingText = new SplitText(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
-    {
-      type: "chars,lines",
-      linesClass: "split-line",
-    }
-  );
+  Array.from(document.querySelectorAll<HTMLElement>(
+    ".landing-info h3, .landing-intro h2, .landing-intro h1"
+  )),
+  {
+    type: "chars,lines",
+    linesClass: "split-line",
+  }
+);
   gsap.fromTo(
     landingText.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
