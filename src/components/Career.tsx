@@ -12,42 +12,46 @@ const Career = () => {
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Senior Secondary (12th), CBSE</h4>
-                <h5>XYZ Public School, Delhi</h5>
+                <h4>B.S. Computer Science</h4>
+                <h5>Arizona State University, Tempe AZ</h5>
               </div>
-              <h3>2021-2022</h3>
+              <h3>2023–2027</h3>
             </div>
             <p>
-              Completed 12th grade with 88%. Developed a strong foundation in core subjects.
+              Pursuing a B.S. in Computer Science with a Certificate in International Studies. Relevant coursework: Data Structures & Algorithms, Computer Networks, Operating Systems, Data Analysis in R & Python.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>B.Tech in CSE</h4>
-                <h5>ABC Institute of Technology, Delhi</h5>
+                <h4>Technology Aide</h4>
+                <h5>SAS Infra, India</h5>
               </div>
-              <h3>2022-2026</h3>
+              <h3>May–Aug 2024</h3>
             </div>
             <p>
-              Pursuing Bachelor of Technology with a CGPA of 8.5/10. Core subjects: Data Structures, Operating Systems, DBMS. Actively participating in hackathons and exploring new technologies.
+              Supported internal infrastructure tasks across development and deployment workflows. Worked with Python-based scripts and tooling to support team operations. Assisted with documentation and issue tracking for repeatable support processes.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Software Development Intern</h4>
-                <h5>Tech Solutions Pvt. Ltd.</h5>
+                <h4>Blockchain Lab Aide</h4>
+                <h5>W. P. Carey School of Business, ASU</h5>
               </div>
-              <h3>May-Jul 2025</h3>
+              <h3>Jun 2024–Present</h3>
             </div>
             <p>
-              Assisted in developing REST APIs using Node.js. Worked on frontend features using React.js. Collaborated with team using Git for version control.
+              Supporting and monitoring 20+ actively deployed embedded systems used by external clients. Enabled remote configuration updates via MQTT, eliminating manual device reconfiguration in the field. Validated system behavior across 16+ configuration and sensor variables to catch edge-case failures.
             </p>
           </div>
+
         </div>
       </div>
     </div>
