@@ -1,92 +1,40 @@
-// Free SplitText replacement — drop this in src/utils/SplitTextFree.ts
-// Mimics the gsap-trial/SplitText API so no other files need to change much
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "./SplitTextFree";
 
-export class SplitText {
-  chars: HTMLElement[] = [];
-  words: HTMLElement[] = [];
-  lines: HTMLElement[] = [];
-  private originalHTML: Map<HTMLElement, string> = new Map();
-  private elements: HTMLElement[] = [];
+interface ParaElement extends HTMLElement {
+  anim?: gsap.core.Animation;
+  split?: SplitText;
+}
 
-  constructor(
-    target: string | HTMLElement | HTMLElement[] | NodeListOf<HTMLElement>,
-    options: { type?: string; linesClass?: string } = {}
-  ) {
-    const type = options.type || "chars,words,lines";
+gsap.registerPlugin(ScrollTrigger);
 
-    // Resolve targets
-    if (typeof target === "string") {
-      this.elements = Array.from(
-        document.querySelectorAll<HTMLElement>(target)
-      );
-    } else if (target instanceof HTMLElement) {
-      this.elements = [target];
-    } else if (NodeList && target instanceof NodeList) {
-      this.elements = Array.from(target as NodeListOf<HTMLElement>);
-    } else if (Array.isArray(target)) {
-      this.elements = target as HTMLElement[];
-    }
+export default function setSplitText() {
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  if (window.innerWidth < 900) return;
+  const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
+  const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+  const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
+  const ToggleAction = "play pause resume reverse";
 
-    this.elements.forEach((el) => {
-      this.originalHTML.set(el, el.innerHTML);
-      this._split(el, type, options.linesClass);
-    });
-  }
+  paras.forEach((para: ParaElement) => {
+    para.classList.add("visible");
+    if (para.anim) { para.anim.progress(1).kill(); para.split?.revert(); }
+    para.split = new SplitText(para, { type: "lines,words", linesClass: "split-line" });
+    para.anim = gsap.fromTo(para.split!.words,
+      { autoAlpha: 0, y: 80 },
+      { autoAlpha: 1, scrollTrigger: { trigger: para.parentElement?.parentElement, toggleActions: ToggleAction, start: TriggerStart }, duration: 1, ease: "power3.out", y: 0, stagger: 0.02 }
+    );
+  });
 
-  private _split(el: HTMLElement, type: string, linesClass?: string) {
-    const text = el.innerText || el.textContent || "";
-    el.innerHTML = "";
-    el.style.overflow = "hidden";
+  titles.forEach((title: ParaElement) => {
+    if (title.anim) { title.anim.progress(1).kill(); title.split?.revert(); }
+    title.split = new SplitText(title, { type: "chars,lines", linesClass: "split-line" });
+    title.anim = gsap.fromTo(title.split!.chars,
+      { autoAlpha: 0, y: 80, rotate: 10 },
+      { autoAlpha: 1, scrollTrigger: { trigger: title.parentElement?.parentElement, toggleActions: ToggleAction, start: TriggerStart }, duration: 0.8, ease: "power2.inOut", y: 0, rotate: 0, stagger: 0.03 }
+    );
+  });
 
-    if (type.includes("chars") || type.includes("words")) {
-      const wordsArr = text.split(" ");
-      wordsArr.forEach((word, wi) => {
-        const wordSpan = document.createElement("span");
-        wordSpan.style.cssText =
-          "display:inline-block; overflow:hidden; vertical-align:bottom;";
-
-        if (type.includes("chars")) {
-          word.split("").forEach((char) => {
-            const charSpan = document.createElement("span");
-            charSpan.style.cssText = "display:inline-block;";
-            charSpan.textContent = char;
-            wordSpan.appendChild(charSpan);
-            this.chars.push(charSpan);
-          });
-        } else {
-          wordSpan.textContent = word;
-        }
-
-        this.words.push(wordSpan);
-        el.appendChild(wordSpan);
-
-        if (wi < wordsArr.length - 1) {
-          const space = document.createElement("span");
-          space.innerHTML = "&nbsp;";
-          space.style.display = "inline-block";
-          el.appendChild(space);
-        }
-      });
-    } else if (type.includes("lines")) {
-      const lineClass = linesClass || "split-line";
-      const lineSpan = document.createElement("span");
-      lineSpan.className = lineClass;
-      lineSpan.style.cssText = "display:block; overflow:hidden;";
-      lineSpan.textContent = text;
-      this.lines.push(lineSpan);
-      el.appendChild(lineSpan);
-    }
-  }
-
-  revert() {
-    this.elements.forEach((el) => {
-      const original = this.originalHTML.get(el);
-      if (original !== undefined) {
-        el.innerHTML = original;
-      }
-    });
-    this.chars = [];
-    this.words = [];
-    this.lines = [];
-  }
+  ScrollTrigger.addEventListener("refresh", () => setSplitText());
 }
