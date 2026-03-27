@@ -5,22 +5,32 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Student Management System",
-    category: "Web Application",
-    tools: "Node.js, MongoDB",
+    title: "EPICS: Big 5 Animal Preservation",
+    category: "Embedded Systems / IoT",
+    tools: "Raspberry Pi Pico, LoRaWAN, GPS Sensors, Python, SolidWorks",
     image: "",
+    link: "https://github.com/mahithw/SaveTheChubbyUnicorns",
   },
   {
-    title: "Weather Prediction Model",
-    category: "Machine Learning",
-    tools: "Python, Scikit-learn",
+    title: "Student Discussion Platform",
+    category: "Full Stack / DevOps",
+    tools: "Java, JavaFX, MySQL, GitHub Actions, Python",
     image: "",
+    link: "https://github.com/mahithw/tp3",
   },
   {
-    title: "Personal Portfolio Website",
-    category: "Web Development",
-    tools: "React.js",
+    title: "Autonomous Robotics Maze Solver",
+    category: "Robotics / Systems",
+    tools: "Python, ROS, MATLAB, Sensor Fusion",
     image: "",
+    link: "",
+  },
+  {
+    title: "P2P Distributed Hash Table Network",
+    category: "Distributed Systems / Networking",
+    tools: "Python, Sockets, DHT Protocol",
+    image: "",
+    link: "https://github.com/mahithw/434",
   },
 ];
 
