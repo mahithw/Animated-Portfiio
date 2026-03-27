@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Motivated and detail-oriented B.Tech student seeking an opportunity to apply technical skills in software development and problem-solving. Passionate about building efficient, scalable, and user-friendly applications while continuously learning new technologies.
+          CS senior at ASU building systems that work in the real world — not just in the lab. I bridge hardware and software, from maintaining 20+ deployed embedded devices at ASU's Blockchain Lab to building full-stack applications with CI/CD pipelines. I also hold a Certificate in International Studies. When I'm not coding, I'm running my 3D printer or tinkering with new hardware.
         </p>
       </div>
     </div>
