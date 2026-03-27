@@ -10,38 +10,28 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href="mailto:collegebuddy.engineer@gmail.com" data-cursor="disable">
-                collegebuddy.engineer@gmail.com
+              <a href="mailto:mahith1010@gmail.com" data-cursor="disable">
+                mahith1010@gmail.com
               </a>
             </p>
             <h4>Education</h4>
-            <p>B.Tech in Computer Science Engineering</p>
+            <p>B.S. Computer Science, Arizona State University</p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
-            <a
-              href="https://github.com/collegebuddy-dev"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
+            <a href="https://github.com/mahithw" target="_blank" data-cursor="disable" className="contact-social">
               Github <MdArrowOutward />
             </a>
-            <a
-              href="https://linkedin.com/in/collegebuddy"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
+            <a href="https://linkedin.com/in/mahithw" target="_blank" data-cursor="disable" className="contact-social">
+              LinkedIn <MdArrowOutward />
             </a>
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>College Buddy</span>
+              Let's build something <br /> <span>real.</span>
             </h2>
             <h5>
-              <MdCopyright /> 2026
+              <MdCopyright /> 2026 Mahith Wuppandla
             </h5>
           </div>
         </div>
